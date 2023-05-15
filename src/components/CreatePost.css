@@ -1,0 +1,15 @@
+.modal {
+    width: 100%;
+    border: 0;
+}
+
+.post_icon {
+    margin: 10px 10px;
+    font-size: 20px;
+
+}
+
+.createPost_emoji {
+    margin-left: 10px;
+    font-size: 20px;
+}
