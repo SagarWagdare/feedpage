@@ -96,7 +96,7 @@
 
 }
 
-/* 
+
 @media (max-width: 767px) {
     .first-card {
         margin: auto;
@@ -134,11 +134,11 @@
         position: fixed;
         float: none;
         width: 300px;
-        margin-left: 30px;
+        margin-left: 180px;
         margin-top: 10px;
 
     }
 
 
 
-} */
+}
