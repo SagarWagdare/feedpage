@@ -21,10 +21,15 @@ export const counterSlice = createSlice({
                 if (!post.hasLiked && likeOrDislike === "like") {
                     post.likes = parseInt(post.likes) + 1;
                     post.hasLiked = true;
+                    post.hasDisliked = false;
+
                 } else if (!post.hasDisliked && likeOrDislike === "dislike") {
                     post.dislikes = parseInt(post.dislikes) + 1;
                     post.likes = parseInt(post.likes) + 1;
                     post.hasDisliked = true;
+                    post.hasLiked = false;
+
+
                 }
             }
         }
