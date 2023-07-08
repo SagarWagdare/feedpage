@@ -1,0 +1,50 @@
+.userProfile_card {
+    position: fixed;
+    width: 250px;
+    height: auto;
+    border: 0;
+    border-radius: 10px;
+    margin-left: 250px;
+    margin-top: 10px;
+}
+
+
+.Userimage_container {
+    height: 50px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+
+.userProfile_image {
+    width: 60px;
+    margin: 10px 0px 40px 10px;
+    border-radius: 100%;
+
+}
+
+
+.userProfile_userName {
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+
+.userProfile_detail {
+    margin-top: 25px;
+    margin-left: 25px;
+    font-weight: 400;
+}
+
+
+
+@media (max-width: 767px) {
+    .first_card {
+        margin: auto;
+        position: relative;
+        float: none;
+        width: 600px;
+        margin-left: 13px;
+    }
+
+
+}

@@ -1,0 +1,29 @@
+.modal {
+    width: 100%;
+    border: 0;
+}
+
+
+.user_image {
+    width: 40px;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+.user_name {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 6px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.post_icon {
+    margin: 10px 10px;
+    font-size: 20px;
+
+}
+
+.createpost_emoji {
+    margin-left: 10px;
+    font-size: 20px;
+}

@@ -1,8 +1,8 @@
 import React from "react";
-import "./HomePage.css";
 import ProfileCard from "./ProfileCard";
 import PostCard from "./PostCard";
 import { Row } from "react-bootstrap";
+import "../css/homePage.module.css";
 const HomePage = () => {
   return (
     <>
