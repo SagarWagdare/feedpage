@@ -1,0 +1,25 @@
+.comment_card {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.comment_div {
+    display: inline-flex;
+}
+
+.comment_input {
+    margin: 10px 20px;
+    width: 500px;
+    height: 30px;
+    outline: none;
+    border-radius: 50px;
+    border: 1px solid gray;
+}
+
+
+
+.user_image {
+    width: 40px;
+    margin-left: 10px;
+    border-radius: 20px;
+}
