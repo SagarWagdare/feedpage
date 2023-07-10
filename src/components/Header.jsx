@@ -4,10 +4,14 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 const Header = () => {
   return (
     <>
-      <Navbar bg="light" variant="light" fixed="top">
+      <Navbar bg="light" variant="light" fixed="top" className="shadow">
         <Container>
-          <Navbar.Brand href="#home">
-            <i className="fa-brands fa-linkedin text-primary"></i>LinkedIn
+          <Navbar.Brand>
+            <i
+              className="fa-brands fa-linkedin text-primary"
+              style={{ filter: "drop-shadow(3 rem 0 0.5rem #e486da)" }}
+            ></i>
+            InsightFeed
           </Navbar.Brand>
           <Nav className="me-auto">
             {/* <Nav.Link href="#home">Home</Nav.Link>

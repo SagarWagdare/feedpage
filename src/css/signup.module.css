@@ -1,0 +1,30 @@
+.signup_card {
+    width: 400px;
+    height: auto;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    padding: 20px;
+    box-shadow: 0px 0px 0 0.5px rgba(0, 0, 0, 0.308);
+    background-color: rgba(173, 216, 230, 0.995);
+}
+
+.card_text {
+    font-weight: bold;
+}
+
+.signup_image {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    mix-blend-mode: multiply;
+    margin: auto;
+}
+
+.signup_btn {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
