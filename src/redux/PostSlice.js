@@ -1,46 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit'
-import postContent from '../Data'
+import { createSlice } from "@reduxjs/toolkit";
+import postContent from "../Data";
 
 const initialState = {
-    Post: postContent,
-
-
-}
+  Post: postContent,
+};
 
 export const counterSlice = createSlice({
-    name: 'counter',
-    initialState,
-    reducers: {
-
-
-        incrementLikeOrDislike: (state, action) => {
-            const { postId, likeOrDislike } = action.payload;
-            const post = state.Post.find(post => post.id === postId);
-
-            if (post) {
-                if (!post.hasLiked && likeOrDislike === "like") {
-                    post.likes = parseInt(post.likes) + 1;
-                    post.hasLiked = true;
-                    post.hasDisliked = false;
-
-                } else if (!post.hasDisliked && likeOrDislike === "dislike") {
-                    post.dislikes = parseInt(post.dislikes) + 1;
-                    post.likes = parseInt(post.likes) + 1;
-                    post.hasDisliked = true;
-                    post.hasLiked = false;
-
-
-                }
-            }
-        }
-
-
-
-
+  name: "counter",
+  initialState,
+  reducers: {
+    addLike: (state, action) => {
+      const post = state.Post.find((post) => post.id === action.payload);
+      if (!post.isnotliked && post) {
+        post.likes = parseInt(post.likes) + 1;
+        post.isnotliked = true;
+      } else {
+        post.likes = parseInt(post.likes) - 1;
+        post.isnotliked = false;
+      }
     },
-})
+  },
+});
 
 // Action creators are generated for each case reducer function
-export const { addLike, addDislike, incrementLikeOrDislike } = counterSlice.actions
+export const { addLike } = counterSlice.actions;
 
-export default counterSlice.reducer
+export default counterSlice.reducer;

@@ -1,23 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Card, Col, Form, Row } from "react-bootstrap";
 import CreatePost from "./CreatePost";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addDislike,
-  addLike,
-  incrementLikeOrDislike,
-} from "../redux/PostSlice";
+import { addLike } from "../redux/PostSlice";
 import styles from "../css/postCard.module.css";
 import classNames from "classnames";
+import Comment from "./post/Comment";
 
 const PostCard = () => {
   const PostData = useSelector((posts) => posts.counter.Post);
-
+  console.log(PostData);
+  // const [isliked, setIsLiked] = useState(false);
+  const [commentClickedId, setCommentClickedId] = useState(null);
+  const [isLiked, setIsLiked] = useState(null);
   const dispatch = useDispatch();
-  console.log("heeeeee", PostData);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handlelikes = useCallback(
+    (data) => {
+      dispatch(addLike(data.id));
+      setIsLiked(data.id);
+    },
+    [dispatch]
+  );
+  // const handleComment = useCallback((data) => {
+  //   console.log(123);
+  //   const comment = PostData.find((item) => item.id === data.id);
+  //   if (comment) {
+  //     setCommentClicked(true);
+  //   } else {
+  //     setCommentClicked(false);
+  //   }
+  // }, []);
+
+  const handleComment = useCallback(
+    (data) => {
+      if (commentClickedId === data.id) {
+        setCommentClickedId(null);
+      } else {
+        setCommentClickedId(data.id);
+      }
+    },
+    [commentClickedId]
+  );
 
   return (
     <Col>
@@ -85,55 +112,51 @@ const PostCard = () => {
                 <span className={styles.user_name}>{data.userName}</span>
               </Col>
             </Row>
-            <div>
-              <p className={styles.user_Postcomment}>{data.content}</p>
-            </div>
+
+            <p className={styles.user_Postcomment}>{data.content}</p>
             <div>
               <img
                 src={data.img}
                 alt="post_image"
                 className={styles.post_image}
               />
+              <span className={styles.likes_count}>
+                <i class="fa-solid fa-thumbs-up text-primary"></i> {data.likes}
+              </span>
             </div>
             <div
               className={classNames(styles.grid_container, styles.post_items)}
             >
-              <div
-                className={styles.grid_item}
-                onClick={() =>
-                  dispatch(
-                    incrementLikeOrDislike({
-                      postId: data.id,
-                      likeOrDislike: "like",
-                    })
-                  )
+              <span
+                className={
+                  isLiked === data.id
+                    ? styles.grid_item_likes
+                    : styles.grid_item
                 }
+                onClick={() => handlelikes(data)}
               >
                 <i className="fa-regular fa-thumbs-up mx-1"></i>
-                {data.likes}
-              </div>
-              <div
-                className={styles.grid_item}
-                onClick={() =>
-                  dispatch(
-                    incrementLikeOrDislike({
-                      postId: data.id,
-                      likeOrDislike: "dislike",
-                    })
-                  )
+                Likes
+              </span>
+              <span
+                className={
+                  commentClickedId === data.id
+                    ? styles.grid_item_comment
+                    : styles.grid_item
                 }
+                onClick={() => handleComment(data)}
               >
-                <i className="fa-regular fa-thumbs-down mx-1"></i>
-                {data.dislikes}
-              </div>
-              <div className={styles.grid_item}>
+                <i className="fa-solid fa-comment-dots"></i> Comment
+              </span>
+              <span className={styles.grid_item}>
                 <i className="fa-solid fa-share-from-square mx-1"></i>
                 share
-              </div>
-              <div className={styles.grid_item}>
+              </span>
+              <span className={styles.grid_item}>
                 <i className="fa-regular fa-paper-plane"></i> send
-              </div>
+              </span>
             </div>
+            {commentClickedId === data.id ? <Comment /> : null}
           </Card>
         ))}
       </div>
